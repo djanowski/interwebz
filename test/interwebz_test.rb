@@ -23,6 +23,10 @@ class InterwebzTest < Test::Unit::TestCase
     end
   end
 
+  def test_honors_return_value
+    assert_equal :ok, Interwebz { :ok }
+  end
+
   def test_retries_a_few_times
     sleep(0.5)
 

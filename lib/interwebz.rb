@@ -4,9 +4,11 @@ def Interwebz(options = {})
   retries = 0
 
   begin
-    yield
+    result = yield
 
     retries = 0
+
+    return result
   rescue SocketError, \
          EOFError, \
          Errno::ECONNREFUSED, \
