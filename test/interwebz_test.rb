@@ -17,7 +17,7 @@ class InterwebzTest < Test::Unit::TestCase
     end
 
     assert_nothing_raised do
-      Interwebz do
+      Interwebz(throttle: 0) do
         Net::HTTP.get_response(URI("http://localhost:98765"))
       end
     end
@@ -33,7 +33,7 @@ class InterwebzTest < Test::Unit::TestCase
     response = nil
 
     assert_nothing_raised do
-      Interwebz do
+      Interwebz(throttle: 0) do
         response = Net::HTTP.get_response(URI("http://localhost:3334")).body
       end
     end
