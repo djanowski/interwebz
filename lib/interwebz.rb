@@ -4,7 +4,14 @@ def Interwebz(options = {})
 
   begin
     yield
-  rescue SocketError, EOFError, Errno::ECONNRESET
+  rescue SocketError, \
+         EOFError, \
+         Errno::ECONNREFUSED, \
+         Errno::ECONNRESET, \
+         Errno::EHOSTUNREACH, \
+         Errno::ENETUNREACH, \
+         Errno::ETIMEDOUT
+
     retries += 1
 
     sleep(retries ** 2 * throttle)
