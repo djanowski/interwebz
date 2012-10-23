@@ -17,7 +17,7 @@ class InterwebzTest < Test::Unit::TestCase
     end
 
     assert_nothing_raised do
-      Interwebz(throttle: 0) do
+      Interwebz(throttle: 0, retries: 2) do
         Net::HTTP.get_response(URI("http://localhost:98765"))
       end
     end
